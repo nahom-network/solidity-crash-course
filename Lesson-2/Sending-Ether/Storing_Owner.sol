@@ -1,22 +1,13 @@
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
+// Step 1: Store the deployer as the owner
 contract Contract {
     address public owner;
-    address public charity;
 
-    constructor(address _charity) {
+    constructor() {
         owner = msg.sender;
-        charity = _charity;
-    }
-
-    function tip() public payable {
-        (bool s, ) = owner.call{value: msg.value}("");
-        require(s);
     }
 
     receive() external payable {}
-
-    function donate() public {
-        selfdestruct(payable(charity));
-    }
 }
