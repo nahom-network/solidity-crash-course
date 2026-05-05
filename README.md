@@ -13,6 +13,7 @@ This repository is organized into **4 main learning tracks**:
 [Presentations](https://github.com/alchemyplatform/learn-solidity-presentations)
 [Marp Tool](https://marp.app/)
 [Foundry](https://book.getfoundry.sh/)
+[Evm.codes](https://evm.codes/)
 
 Get started with Solidity fundamentals:
 
