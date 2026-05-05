@@ -8,6 +8,12 @@ This repository is organized into **4 main learning tracks**:
 
 ### 1. **Solidity Introduction** 📚
 
+#### Resources
+
+[Presentations](https://github.com/alchemyplatform/learn-solidity-presentations)
+[Marp Tool](https://marp.app/)
+[Foundry](https://book.getfoundry.sh/)
+
 Get started with Solidity fundamentals:
 
 - **Practice Data Types** - Work with bools, integers, and enums
