@@ -35,11 +35,8 @@ Through this project, the following concepts were implemented and tested:
 
  👥 Team Members & Responsibilities
 
-| Name                | ID             | GitHub Profile                      | Responsibilities                              |
-|---------------------|----------------|-------------------------------------|----------------------------------------------|
-| Yohannes welel      | UGR/25337/14     | https://github.com/yoheniy       | Environment setup, initial contracts, coordination |
-
-
-All contributions are reflected in the repository commit history.
+| Name                | ID             | GitHub Profile                      |
+|---------------------|----------------|-------------------------------------|
+| Yohannes welel      | UGR/25337/14     | https://github.com/yoheniy        
 
 ---

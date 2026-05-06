@@ -105,3 +105,5 @@ For a detailed list of all 11 modules with descriptions, see [INDEX.md](./INDEX.
 
 - [Nahom](https://github.com/nahom-network) => UGR/26395/14
 - [Beal](https://github.com/prasimbaal) => UGR/25540/14
+
+- [Yohannes welel](https://github.com/yoheniy) => UGR/25337/14
