@@ -315,8 +315,3 @@
 
 ---
 
-## Extraction Summary
-
-- **Total Stage Containers:** 11
-- **Successfully Extracted:** 11
-- **Output Directory:** `solidity`
