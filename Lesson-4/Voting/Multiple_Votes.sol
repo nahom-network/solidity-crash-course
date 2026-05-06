@@ -1,80 +1,62 @@
-pragma solidity ^0.8.20;
+pragma solidity 0.8.20;
 
 contract Voting {
+
     struct Proposal {
         address target;
         bytes data;
         uint yesCount;
         uint noCount;
-        bool executed;
     }
 
     Proposal[] public proposals;
 
-    mapping(address => bool) public isMember;
-
+    // Track each voter's choice per proposal
     mapping(uint => mapping(address => bool)) public hasVoted;
     mapping(uint => mapping(address => bool)) public voteChoice;
 
-    event ProposalCreated(uint proposalId);
-    event VoteCast(uint proposalId, address voter);
-
-    constructor(address[] memory initialMembers) {
-        isMember[msg.sender] = true;
-
-        for (uint i = 0; i < initialMembers.length; i++) {
-            isMember[initialMembers[i]] = true;
-        }
-    }
-
     function newProposal(address target, bytes calldata data) external {
-        require(isMember[msg.sender], "Not a member");
-
         proposals.push(
             Proposal({
                 target: target,
                 data: data,
                 yesCount: 0,
-                noCount: 0,
-                executed: false
+                noCount: 0
             })
         );
-
-        emit ProposalCreated(proposals.length - 1);
     }
 
     function castVote(uint proposalId, bool support) external {
-        require(isMember[msg.sender], "Not a member");
-
         Proposal storage proposal = proposals[proposalId];
 
+        // If user already voted before
         if (hasVoted[proposalId][msg.sender]) {
             bool previousVote = voteChoice[proposalId][msg.sender];
 
-            if (previousVote) {
-                proposal.yesCount--;
-            } else {
-                proposal.noCount--;
+            // If changing from YES -> NO
+            if (previousVote && !support) {
+                proposal.yesCount -= 1;
+                proposal.noCount += 1;
             }
+
+            // If changing from NO -> YES
+            else if (!previousVote && support) {
+                proposal.noCount -= 1;
+                proposal.yesCount += 1;
+            }
+        } 
+        else {
+            // First time voting
+            if (support) {
+                proposal.yesCount += 1;
+            } else {
+                proposal.noCount += 1;
+            }
+
+            hasVoted[proposalId][msg.sender] = true;
         }
 
-        hasVoted[proposalId][msg.sender] = true;
+        // Always update latest vote
         voteChoice[proposalId][msg.sender] = support;
-
-        if (support) {
-            proposal.yesCount++;
-        } else {
-            proposal.noCount++;
-        }
-
-        emit VoteCast(proposalId, msg.sender);
-
-        // ✅ EXECUTION LOGIC
-        if (!proposal.executed && proposal.yesCount >= 10) {
-            proposal.executed = true;
-
-            (bool success, ) = proposal.target.call(proposal.data);
-            require(success, "Execution failed");
-        }
     }
 }
