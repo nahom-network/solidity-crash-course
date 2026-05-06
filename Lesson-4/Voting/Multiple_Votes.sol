@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity 0.8.20;
 
 contract Voting {
@@ -15,6 +16,7 @@ contract Voting {
     mapping(uint => mapping(address => bool)) public hasVoted;
     mapping(uint => mapping(address => bool)) public voteChoice;
 
+    // Creates a new proposal with the given target address and execution data
     function newProposal(address target, bytes calldata data) external {
         proposals.push(
             Proposal({
@@ -26,6 +28,8 @@ contract Voting {
         );
     }
 
+    // Casts or updates a vote on an existing proposal
+    // Allows users to change their previous vote choice
     function castVote(uint proposalId, bool support) external {
         Proposal storage proposal = proposals[proposalId];
 
