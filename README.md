@@ -110,3 +110,5 @@ For a detailed list of all 11 modules with descriptions, see [INDEX.md](./INDEX.
 - [Tedela Albene](https://github.com/Jerry22-tedi) => UGR/25282/14
 
 - [Abraham Yitbarek](https://github.com/Abraham4931) => UGR/26544/14  
+
+- [Firaol Bulo](https://github.com/firaolkiya) => UGR/25281/14  
